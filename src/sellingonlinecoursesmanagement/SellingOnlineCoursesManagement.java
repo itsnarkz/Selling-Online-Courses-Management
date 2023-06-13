@@ -1,4 +1,7 @@
 package sellingonlinecoursesmanagement;
+
+import sellingonlinecoursesmanagement.App.App;
+
 public class SellingOnlineCoursesManagement {
     public static void main(String[] args) {
         App app = new App();
