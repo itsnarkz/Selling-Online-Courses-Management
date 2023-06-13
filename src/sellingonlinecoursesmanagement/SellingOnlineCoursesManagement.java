@@ -1,21 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sellingonlinecoursesmanagement;
-
-/**
- *
- * @author anina
- */
 public class SellingOnlineCoursesManagement {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        App app = new App();
+        
+        app.displayInfo();
+        while(true) {
+            app.displayMenu();
+            int choice = app.getChoice();
+        
+            switch(choice) {
+                case 1: //Log in
+                    int role = app.Login();
+                
+                    if(role == 1) app.runAdmin();
+                    if(role == 2) app.runManager();
+                    if(role == 3) app.runEmployee();
+                    if(role == 4) app.runCustomer();
+                case 2: //Sign up
+                    app.Signup();
+                case 0: //Exit
+                    System.exit(0);
+            }
+        }
+        
     }
     
 }
