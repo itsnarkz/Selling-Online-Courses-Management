@@ -6,7 +6,6 @@ public class Course {
     private String id;
     private String courseName;
     private String category;
-
     private String major;
     private String courseAuthor;
     private int sold;

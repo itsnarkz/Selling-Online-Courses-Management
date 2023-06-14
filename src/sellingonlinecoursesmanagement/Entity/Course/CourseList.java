@@ -32,6 +32,7 @@ public class CourseList {
             if(!check) return id;
         }
     }
+
     public void createCourse(String courseName, String category, String major, String courseAuthor, double cost, String publishedDate) {
         String id = randomID();
         Course newCourse = new Course(id, courseName, category, major, courseAuthor, cost, publishedDate);
