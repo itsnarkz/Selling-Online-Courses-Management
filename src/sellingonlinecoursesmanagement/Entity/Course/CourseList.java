@@ -23,7 +23,7 @@ public class CourseList {
 
             boolean check = false;
             for(Course course : courseList) {
-                if(course.getId() == id) {
+                if(Objects.equals(course.getId(), id)) {
                     check = true;
                     break;
                 }
