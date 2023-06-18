@@ -157,4 +157,27 @@ public class CourseList {
         System.out.printf("%15s %20s %20s %20s %15s %15s %15s %20s %20s\n", "CourseID", "Name", "Category", "Author", "Sold", "Price", "Rating", "Published Date", "Last Update Date");
         for(Course course : list) course.display();
     }
+
+    //sale by admin
+    public void sale() {
+        for (Course course : courseList) {
+            double price = course.getPrice();
+            double discount = 0.0;
+
+            if (price < 20) {
+                discount = 0.1;  // 10% off
+            } else if (price >= 20 && price < 100) {
+                discount = 0.2;  // 20% off
+            } else if (price >= 100 && price < 250) {
+                discount = 0.3;  // 30% off
+            } else if (price >= 250) {
+                discount = 0.4;  // 40% off
+            }
+
+            double discountedPrice = price - (price * discount);
+            course.setPrice(discountedPrice);
+        }
+
+        System.out.println("Courses on sale have been discounted!");
+    }
 }
