@@ -1,4 +1,13 @@
 package sellingonlinecoursesmanagement.Entity.Person.Customer;
 
-public class Customer {
+public class Customer extends Person {
+    private String voucher;
+
+    public Customer() {
+    }
+
+    public Customer(String personID, String name, int age, String gender, String phoneNumber, String email, String voucher) {
+        super(personID, name, age, gender, phoneNumber, email);
+        this.voucher = voucher;
+    }
 }
