@@ -1,4 +1,4 @@
-package sellingonlinecoursesmanagement.Entity.Order;
+package Entity.order;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -91,4 +91,3 @@ public class Order {
         System.out.format("| Order Date: %76s|\n", orderDate.format(formatter));
     }
 }
-
