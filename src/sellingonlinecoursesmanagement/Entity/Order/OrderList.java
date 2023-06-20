@@ -1,12 +1,12 @@
-package sellingonlinecoursesmanagement.Entity.Order;
+package Entity.order;
+
 
 import Entity.course.Course;
 import Entity.course.CourseList;
+import Entity.Person.Customer;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class OrderList {
     private List<Order> orderList;
@@ -15,15 +15,33 @@ public class OrderList {
         this.orderList = new ArrayList<>();
     }
 
-    //ham random orderID
-    private int randomOrderID() {
-        Random random = new Random();
-        return random.nextInt(900000) + 100000;
+    // Generate a random orderID
+    public String randomOrderID() {
+        Random rand = new Random();
+        char[] num = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+
+        while (true) {
+            String id = "";
+            for (int i = 1; i <= 6; ++i) {
+                int j = rand.nextInt(10);
+                id = id + num[j];
+            }
+
+            boolean check = false;
+            for (Order order : orderList) {
+                if (order.getOrderId().equals(id)) {
+                    check = true;
+                    break;
+                }
+            }
+
+            if (!check) return id;
+        }
     }
 
     //ham tao 1 order moi
     public void createOrder(String customerName) {
-        int orderID = randomOrderID();
+        String orderID = randomOrderID();
         Order order = new Order(String.valueOf(orderID), customerName);
         orderList.add(order);
     }
@@ -94,5 +112,6 @@ public class OrderList {
     }
 
 
-
+    public void createOrder(String orderId, Course course, LocalDateTime orderDate) {
+    }
 }
