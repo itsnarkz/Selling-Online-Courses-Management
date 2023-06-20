@@ -105,6 +105,6 @@ class OrderService {
     }
 
 
-    //applyVoucher
+    //applyVoucher: hoan thien sau khi voucher duoc tao boi class Person
 
 }
