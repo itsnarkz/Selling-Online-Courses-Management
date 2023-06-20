@@ -1,4 +1,4 @@
-package sellingonlinecoursesmanagement.Entity.Course;
+package Entity.course;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -180,4 +180,15 @@ public class CourseList {
 
         System.out.println("Courses on sale have been discounted!");
     }
+
+
+    public Course searchCourseByID(String courseID) {
+        for (Course course : courseList) {
+            if (course.getId().equals(courseID)) {
+                return course;
+            }
+        }
+        return null; // Course not found
+    }
+
 }
