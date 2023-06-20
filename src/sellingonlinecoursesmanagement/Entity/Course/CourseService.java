@@ -1,4 +1,4 @@
-package sellingonlinecoursesmanagement.Entity.Course;
+package Entity.course;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
