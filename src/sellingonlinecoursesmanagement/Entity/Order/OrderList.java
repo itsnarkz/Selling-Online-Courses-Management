@@ -1,9 +1,9 @@
-package Entity.order;
+package sellingonlinecoursesmanagement.Entity.Order;
 
 
-import Entity.course.Course;
-import Entity.course.CourseList;
-import Entity.Person.Customer;
+import sellingonlinecoursesmanagement.Entity.Course.Course;
+import sellingonlinecoursesmanagement.Entity.Course.CourseList;
+import sellingonlinecoursesmanagement.Entity.Person.Customer.Customer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;

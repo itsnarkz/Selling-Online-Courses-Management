@@ -1,5 +1,7 @@
 package sellingonlinecoursesmanagement.Entity.Person.Employee;
 
+import sellingonlinecoursesmanagement.Entity.Person.Person;
+
 public class Employee extends Person {
     public Employee() {
     }

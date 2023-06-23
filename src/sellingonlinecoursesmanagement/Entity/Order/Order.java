@@ -1,4 +1,4 @@
-package Entity.order;
+package sellingonlinecoursesmanagement.Entity.Order;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

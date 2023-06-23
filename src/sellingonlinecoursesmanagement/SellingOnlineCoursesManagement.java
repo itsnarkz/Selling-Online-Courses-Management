@@ -9,19 +9,22 @@ public class SellingOnlineCoursesManagement {
         app.displayInfo();
         while(true) {
             app.displayMenu();
-            int choice = app.getChoice();
+            int choice = app.getChoice(1, 3);
         
             switch(choice) {
                 case 1: //Log in
                     int role = app.Login();
+                    if(role == -1) break;
                 
                     if(role == 1) app.runAdmin();
                     if(role == 2) app.runManager();
                     if(role == 3) app.runEmployee();
                     if(role == 4) app.runCustomer();
+                    break;
                 case 2: //Sign up
                     app.Signup();
-                case 0: //Exit
+                    break;
+                case 3: //Exit
                     System.exit(0);
             }
         }

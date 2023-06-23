@@ -1,6 +1,8 @@
 package sellingonlinecoursesmanagement.Entity.Person.Manager;
 
-public class Manager extends Person{
+import sellingonlinecoursesmanagement.Entity.Person.Person;
+
+public class Manager extends Person {
     public Manager() {
     }
 

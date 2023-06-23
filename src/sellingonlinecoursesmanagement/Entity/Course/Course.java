@@ -1,4 +1,4 @@
-package Entity.course;
+package sellingonlinecoursesmanagement.Entity.Course;
 
 import java.time.LocalDate;
 

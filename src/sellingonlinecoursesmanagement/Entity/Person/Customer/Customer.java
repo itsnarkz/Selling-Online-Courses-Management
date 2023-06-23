@@ -1,5 +1,7 @@
 package sellingonlinecoursesmanagement.Entity.Person.Customer;
 
+import sellingonlinecoursesmanagement.Entity.Person.Person;
+
 public class Customer extends Person {
     private String voucher;
 

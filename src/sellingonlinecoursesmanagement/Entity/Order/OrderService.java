@@ -1,9 +1,9 @@
-package Entity.order;
+package sellingonlinecoursesmanagement.Entity.Order;
 
-import Entity.Person.Customer;
-import Entity.course.Course;
-import Entity.course.CourseList;
-import Entity.order.OrderList;
+import sellingonlinecoursesmanagement.Entity.Person.Customer.Customer;
+import sellingonlinecoursesmanagement.Entity.Course.Course;
+import sellingonlinecoursesmanagement.Entity.Course.CourseList;
+import sellingonlinecoursesmanagement.Entity.Order.OrderList;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -11,6 +11,14 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 class OrderService {
+    private OrderList orderList;
+    private CourseList courseList;
+
+    public OrderService() {
+        this.orderList = new OrderList();
+        this.courseList = new CourseList();
+    }
+
     private boolean validID(String id) {
         if (id.length() != 6) return false;
         for (int i = 0; i < 6; ++i) if (id.charAt(i) > '9' || id.charAt(i) < '0') return false;
@@ -37,8 +45,8 @@ class OrderService {
         String courseId = inputID();
 
         CourseList courseList = new CourseList();
-        Course course = courseList.searchCourseByID(courseId);
-
+        Course course = courseList.searchByID(courseId);
+//
         if (course != null) {
             System.out.println(course.getCourseName());
 
@@ -51,7 +59,6 @@ class OrderService {
 
 
     public void createOrder() {
-        OrderList orderList = new OrderList();
         String orderId = orderList.randomOrderID();
         System.out.println("Order ID: " + orderId);
 
