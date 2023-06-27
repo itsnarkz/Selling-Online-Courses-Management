@@ -4,17 +4,17 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class App {
-    private AdminService adminService;
-    private ManagerService managerService;
-    private EmployeeService employeeService;
-    private CustomerService customerService;
+    private AdminFeatures adminFeatures;
+    private ManagerFeatures managerFeatures;
+    private EmployeeFeatures employeeFeatures;
+    private CustomerFeatures customerFeatures;
     private LoginSystem loginSystem;
 
     public App() {
-        this.adminService = new AdminService();
-        this.managerService = new ManagerService();
-        this.employeeService = new EmployeeService();
-        this.customerService = new CustomerService();
+        this.adminFeatures = new AdminFeatures();
+        this.managerFeatures = new ManagerFeatures();
+        this.employeeFeatures = new EmployeeFeatures();
+        this.customerFeatures = new CustomerFeatures();
         this.loginSystem = new LoginSystem();
     }
 

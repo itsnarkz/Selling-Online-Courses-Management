@@ -1,4 +1,4 @@
 package sellingonlinecoursesmanagement.App;
 
-public class ManagerService {
+public class CustomerFeatures {
 }
