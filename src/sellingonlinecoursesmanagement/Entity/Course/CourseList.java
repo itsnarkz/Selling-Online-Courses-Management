@@ -10,33 +10,18 @@ public class CourseList {
         this.courseList = new ArrayList<Course>();
     }
 
-    private String randomID() {
-        Random rand = new Random();
-        char[] num = new char[]{'0', '1', '2', '3', '4','5', '6', '7', '8', '9'};
-
-        while(true) {
-            String id = "";
-            for(int i=1;i<=6;++i) {
-                int j = rand.nextInt(10);
-                id = id + num[j];
-            }
-
-            boolean check = false;
-            for(Course course : courseList) {
-                if(Objects.equals(course.getId(), id)) {
-                    check = true;
-                    break;
-                }
-            }
-
-            if(!check) return id;
-        }
-    }
-
-    public void createCourse(String courseName, String category, String major, String courseAuthor, double cost, String publishedDate) {
-        String id = randomID();
+    public void createCourse(String id, String courseName, String category, String major, String courseAuthor, double cost, String publishedDate) {
         Course newCourse = new Course(id, courseName, category, major, courseAuthor, cost, publishedDate);
-        courseList.add(newCourse);
+
+        boolean check = false;
+        for(Course course : courseList) {
+            if(Objects.equals(course.getId(), id)) {
+                check = true;
+                break;
+            }
+        }
+
+        if(!check) courseList.add(newCourse);
     }
 
     public void deleteCourse(String id) {
@@ -74,12 +59,12 @@ public class CourseList {
 
         if(target == null) System.out.println("No course found with id " + id + "!");
         else {
-            if(courseName != "0") target.setCourseName(courseName);
-            if(category != "0") target.setCategory(category);
-            if(major != "0") target.setMajor(major);
-            if(courseAuthor != "0") target.setCourseAuthor(courseAuthor);
+            if(!Objects.equals(courseName, "0")) target.setCourseName(courseName);
+            if(!Objects.equals(category, "0")) target.setCategory(category);
+            if(!Objects.equals(major, "0")) target.setMajor(major);
+            if(!Objects.equals(courseAuthor, "0")) target.setCourseAuthor(courseAuthor);
             if(price != 0) target.setPrice(price);
-            if(publishedDate != "0") target.setPublishedDate(publishedDate);
+            if(!Objects.equals(publishedDate, "0")) target.setPublishedDate(publishedDate);
             target.setLastUpdateDate(String.valueOf(LocalDate.now()));
         }
     }

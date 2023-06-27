@@ -2,13 +2,18 @@ package sellingonlinecoursesmanagement.Entity.Course;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
+import java.util.Random;
 import java.util.Scanner;
 
 public class CourseService {
     private CourseList courseList;
+    private CourseFileSystem fileSystem;
 
     public CourseService() {
-        this.courseList = new CourseList();
+        this.fileSystem = new CourseFileSystem();
+        fileSystem.loadCourse();
+        this.courseList = fileSystem.getAllCourses();
     }
 
     private boolean validID(String id) {
@@ -98,6 +103,25 @@ public class CourseService {
         return res;
     }
 
+    private String randomID() {
+        Random rand = new Random();
+        char[] num = new char[]{'0', '1', '2', '3', '4','5', '6', '7', '8', '9'};
+
+        while(true) {
+            String id = "";
+            for(int i=1;i<=6;++i) {
+                int j = rand.nextInt(10);
+                id = id + num[j];
+            }
+
+            boolean check = false;
+            Course target = courseList.searchByID(id);
+            if(target != null) check = true;
+
+            if(!check) return id;
+        }
+    }
+
     public void createCourse() {
         System.out.print("Enter name: ");
         String courseName = this.inputInfo();
@@ -117,7 +141,9 @@ public class CourseService {
         System.out.print("Enter published date: ");
         String publishedDate = this.inputDate();
 
-        courseList.createCourse(courseName, category, major, courseAuthor, price, publishedDate);
+        String id = randomID();
+        courseList.createCourse(id, courseName, category, major, courseAuthor, price, publishedDate);
+        fileSystem.addCourse(id, courseName, category, major, courseAuthor, price, publishedDate);
         System.out.println("Added new course successfully!");
     }
 
@@ -129,6 +155,7 @@ public class CourseService {
 
         if(target != null) {
             courseList.deleteCourse(id);
+            fileSystem.deleteCourse(id);
             System.out.println("Delete course with id " + id + " successfully");
         }
         else System.out.println("There is no course with id " + id + "!");
@@ -162,6 +189,7 @@ public class CourseService {
         String publishedDate = this.inputInfo();
 
         courseList.updateCourse(id, name, category, major, author, price, publishedDate);
+        fileSystem.updateCourse(id, name, category, major, author, price, publishedDate);
         System.out.println("Update course successfully!");
     }
 
