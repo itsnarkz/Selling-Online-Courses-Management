@@ -4,6 +4,7 @@ package sellingonlinecoursesmanagement.Entity.Order;
 import sellingonlinecoursesmanagement.Entity.Course.Course;
 import sellingonlinecoursesmanagement.Entity.Course.CourseList;
 import sellingonlinecoursesmanagement.Entity.Person.Customer.Customer;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -18,34 +19,27 @@ public class OrderList {
     // Generate a random orderID
     public String randomOrderID() {
         Random rand = new Random();
-        char[] num = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        StringBuilder id = new StringBuilder();
 
         while (true) {
-            String id = "";
-            for (int i = 1; i <= 6; ++i) {
+            for (int i = 0; i < 6; i++) {
                 int j = rand.nextInt(10);
-                id = id + num[j];
+                id.append(j);
             }
 
-            boolean check = false;
-            for (Order order : orderList) {
-                if (order.getOrderId().equals(id)) {
-                    check = true;
-                    break;
-                }
-            }
+            boolean check = orderList.stream().noneMatch(order -> order.getOrderId().equals(id.toString()));
+            if (check) return id.toString();
 
-            if (!check) return id;
+            id.setLength(0);
         }
     }
 
     //ham tao 1 order moi
     public void createOrder(String customerName) {
         String orderID = randomOrderID();
-        Order order = new Order(String.valueOf(orderID), customerName);
+        Order order = new Order(orderID, customerName);
         orderList.add(order);
     }
-
 
     //ham huy 1 don hang trong list don hang
     public void cancelOrder(String orderID) {
@@ -60,7 +54,6 @@ public class OrderList {
         }
         System.out.println("Order with ID " + orderID + " does not exist.");
     }
-
 
     // Search order by orderID
     public void searchOrder(String orderID) {
@@ -110,7 +103,6 @@ public class OrderList {
 
         System.out.println("------------------------------------------------------");
     }
-
 
     public void createOrder(String orderId, Course course, LocalDateTime orderDate) {
     }
