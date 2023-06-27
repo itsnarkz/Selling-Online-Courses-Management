@@ -3,7 +3,6 @@ package sellingonlinecoursesmanagement.Entity.Order;
 import sellingonlinecoursesmanagement.Entity.Course.Course;
 import sellingonlinecoursesmanagement.Entity.Course.CourseList;
 import sellingonlinecoursesmanagement.Entity.Order.OrderList;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -92,4 +91,5 @@ class OrderService {
     }
 
     //applyVoucher: hoan thien sau khi voucher duoc tao boi class Person
+    // viet ham tinh gia tien cua cac course
 }
