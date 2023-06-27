@@ -139,7 +139,7 @@ public class CourseList {
     }
 
     public void display(List<Course> list) {
-        System.out.printf("%15s %20s %20s %20s %15s %15s %15s %20s %20s\n", "CourseID", "Name", "Category", "Author", "Sold", "Price", "Rating", "Published Date", "Last Update Date");
+        System.out.printf("%15s %20s %20s %20s %20s %15s %15s %15s %20s %20s\n", "CourseID", "Name", "Category", "Major", "Author", "Sold", "Price", "Rating", "Published Date", "Last Update Date");
         for(Course course : list) course.display();
     }
 }

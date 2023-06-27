@@ -108,6 +108,6 @@ public class Course {
     }
 
     public void display() {
-        System.out.printf("%15s %20s %20s %20s %15d %15.2f %15.2f %20s %20s\n", this.id, this.courseName, this.category, this.courseAuthor, this.sold, this.price, this.rating, this.publishedDate, this.lastUpdateDate);
+        System.out.printf("%15s %20s %20s %20s %20s %15d %15.2f %15.2f %20s %20s\n", this.id, this.courseName, this.category, this.major, this.courseAuthor, this.sold, this.price, this.rating, this.publishedDate, this.lastUpdateDate);
     }
 }
