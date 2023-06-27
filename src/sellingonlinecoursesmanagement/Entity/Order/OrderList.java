@@ -1,10 +1,8 @@
 package sellingonlinecoursesmanagement.Entity.Order;
 
-
 import sellingonlinecoursesmanagement.Entity.Course.Course;
 import sellingonlinecoursesmanagement.Entity.Course.CourseList;
 import sellingonlinecoursesmanagement.Entity.Person.Customer.Customer;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -106,4 +104,15 @@ public class OrderList {
 
     public void createOrder(String orderId, Course course, LocalDateTime orderDate) {
     }
+
+    // Calculate the total cost of courses in the order
+    private void calCost(Order order) {
+        double totalCost = 0.0;
+        for (Course course : order.getCourses()) {
+            totalCost += course.getPrice();
+        }
+        order.setCost(totalCost);
+    }
+
+
 }
