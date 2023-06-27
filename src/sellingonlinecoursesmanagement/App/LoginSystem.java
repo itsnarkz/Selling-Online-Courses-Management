@@ -12,15 +12,11 @@ import java.util.Scanner;
 public class LoginSystem {
     private Map<String, String> regularUsers;
     private Map<String, String> adminUsers;
-    private Map<String, String> managerUsers;
-    private Map<String, String> employeeUsers;
     private static final String FILE_PATH = "users.txt";
 
     public LoginSystem() {
         regularUsers = new HashMap<>();
         adminUsers = new HashMap<>();
-        managerUsers = new HashMap<>();
-        employeeUsers = new HashMap<>();
         loadUsers();
     }
 
@@ -33,27 +29,11 @@ public class LoginSystem {
             return true;
         }
 
-        if (managerUsers.containsKey(username) && managerUsers.get(username).equals(password)) {
-            return true;
-        }
-
-        if (employeeUsers.containsKey(username) && employeeUsers.get(username).equals(password)) {
-            return true;
-        }
-
         return false;
     }
 
     public boolean hasPermission(String username, String permission) {
         if (adminUsers.containsKey(username) && permission.equals("admin")) {
-            return true;
-        }
-
-        if (managerUsers.containsKey(username) && permission.equals("manager")) {
-            return true;
-        }
-
-        if (employeeUsers.containsKey(username) && permission.equals("employee")) {
             return true;
         }
 
@@ -65,10 +45,6 @@ public class LoginSystem {
             regularUsers.put(username, password);
         } else if (role.equals("admin")) {
             adminUsers.put(username, password);
-        } else if (role.equals("employee")) {
-            employeeUsers.put(username, password);
-        } else if (role.equals("manager")) {
-            managerUsers.put(username, password);
         } else {
             System.out.println("Invalid role.");
             return;
@@ -90,11 +66,8 @@ public class LoginSystem {
                     regularUsers.put(username, password);
                 } else if (role.equals("admin")) {
                     adminUsers.put(username, password);
-                } else if (role.equals("employee")) {
-                    employeeUsers.put(username, password);
-                } else if (role.equals("manager")) {
-                    managerUsers.put(username, password);
                 }
+
             }
         } catch (IOException e) {
             System.out.println("Error loading users from file: " + e.getMessage());
@@ -113,15 +86,6 @@ public class LoginSystem {
                 writer.newLine();
             }
 
-            for (Map.Entry<String, String> entry : employeeUsers.entrySet()) {
-                writer.write(entry.getKey() + ":" + entry.getValue() + ":employee");
-                writer.newLine();
-            }
-
-            for (Map.Entry<String, String> entry : managerUsers.entrySet()) {
-                writer.write(entry.getKey() + ":" + entry.getValue() + ":manager");
-                writer.newLine();
-            }
         } catch (IOException e) {
             System.out.println("Error saving users to file: " + e.getMessage());
         }

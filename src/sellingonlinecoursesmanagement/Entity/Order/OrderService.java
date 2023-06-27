@@ -90,6 +90,14 @@ class OrderService {
         orderList.searchOrder(orderId);
     }
 
+    public void listOrder() {
+        orderList.listOrder();
+    }
+
+    public void purchaseHistory() {
+        orderList.purchaseHistory();
+    }
+
     //applyVoucher: hoan thien sau khi voucher duoc tao boi class Person
     // viet ham tinh gia tien cua cac course
 }
