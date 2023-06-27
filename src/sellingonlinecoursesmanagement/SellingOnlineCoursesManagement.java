@@ -17,9 +17,7 @@ public class SellingOnlineCoursesManagement {
                     if(role == -1) break;
                 
                     if(role == 1) app.runAdmin();
-                    if(role == 2) app.runManager();
-                    if(role == 3) app.runEmployee();
-                    if(role == 4) app.runCustomer();
+                    if(role == 2) app.runCustomer();
                     break;
                 case 2: //Sign up
                     app.Signup();

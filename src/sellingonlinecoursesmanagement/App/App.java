@@ -61,15 +61,9 @@ public class App {
                 if (loginSystem.hasPermission(username, "admin")) {
                     System.out.println("You are running as admin");
                     return 1;
-                } else if (loginSystem.hasPermission(username, "manager")) {
-                    System.out.println("You are running as manager");
-                    return 2;
-                } else if (loginSystem.hasPermission(username, "employee")) {
-                    System.out.println("You are running as employee");
-                    return 3;
                 } else {
                     System.out.println("You are running as user");
-                    return 4;
+                    return 2;
                 }
             } else {
                 System.out.println("Login failed. Invalid username or password.");
@@ -92,13 +86,6 @@ public class App {
     }
 
     public void runAdmin() {
-    }
-
-    public void runManager() {
-
-    }
-
-    public void runEmployee() {
 
     }
 
