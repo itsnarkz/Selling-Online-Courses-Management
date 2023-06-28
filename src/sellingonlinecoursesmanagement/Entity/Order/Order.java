@@ -1,9 +1,12 @@
 package sellingonlinecoursesmanagement.Entity.Order;
 
 import sellingonlinecoursesmanagement.Entity.Course.Course;
+import sellingonlinecoursesmanagement.Entity.Course.CourseList;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Order {
@@ -12,7 +15,6 @@ public class Order {
     private LocalDateTime orderDate;
     private List<Course> courses;
     private double cost;
-    private String status;
 
     public Order(String orderId, String customerName) {
         this.orderId = orderId;
@@ -20,7 +22,6 @@ public class Order {
         this.orderDate = LocalDateTime.now();
         this.courses = new ArrayList<>();
         this.cost = 0.0;
-        this.status = "In Progress";
     }
 
     public String getOrderId() {
@@ -43,16 +44,40 @@ public class Order {
         return cost;
     }
 
-    public String getStatus() {
-        return status;
-    }
 
     public void setCost(double cost) {
         this.cost = cost;
     }
 
-    public void addCourse(Course course) {
-        courses.add(course);
+    public void addCourse(String courseId, CourseList courseList) {
+        Course course = courseList.searchByID(courseId);
+        if (course != null) {
+            courses.add(course);
+            cost += course.getPrice();
+            System.out.println("Course added to the order.");
+        } else {
+            System.out.println("Course not found by the entered ID: " + courseId);
+        }
+    }
+
+    public void removeCourse(String courseId, CourseList courseList) {
+        Iterator<Course> iterator = courses.iterator();
+        boolean found = false;
+        while (iterator.hasNext()) {
+            Course course = iterator.next();
+            if (course.getId().equals(courseId)) {
+                iterator.remove();
+                cost -= course.getPrice();
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            System.out.println("Course removed from the order.");
+        } else {
+            System.out.println("Course not found by the entered ID: " + courseId);
+        }
     }
 
     public void displayOrder(String orderID) {
@@ -61,7 +86,6 @@ public class Order {
         System.out.println("Customer Name: " + customerName);
         System.out.println("Order Date: " + orderDate.format(formatter));
         System.out.println("Cost: " + cost);
-        System.out.println("Status: " + status);
         System.out.println("Courses in Order:");
         for (Course course : courses) {
             System.out.println("- " + course.getCourseName());
