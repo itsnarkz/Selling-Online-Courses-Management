@@ -2,7 +2,6 @@ package sellingonlinecoursesmanagement.Entity.Order;
 
 import sellingonlinecoursesmanagement.Entity.Course.Course;
 import sellingonlinecoursesmanagement.Entity.Course.CourseList;
-import sellingonlinecoursesmanagement.Entity.Person.Customer.Customer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -14,7 +13,7 @@ public class OrderList {
         this.orderList = new ArrayList<>();
     }
 
-    // Generate a random orderID
+    // Ham tao ID ngau nhien
     public String randomOrderID() {
         Random rand = new Random();
         StringBuilder id = new StringBuilder();
@@ -32,14 +31,16 @@ public class OrderList {
         }
     }
 
-    //ham tao 1 order moi
+
+    // Tao don hang moi
     public void createOrder(String customerName) {
         String orderID = randomOrderID();
         Order order = new Order(orderID, customerName);
         orderList.add(order);
     }
 
-    //ham huy 1 don hang trong list don hang
+
+    // Xoa 1 don hang
     public void cancelOrder(String orderID) {
         Iterator<Order> iterator = orderList.iterator();
         while (iterator.hasNext()) {
@@ -53,7 +54,8 @@ public class OrderList {
         System.out.println("Order with ID " + orderID + " does not exist.");
     }
 
-    // Search order by orderID
+
+    // Search for an order by orderID - dung de hien thi order
     public void searchOrder(String orderID) {
         for (Order order : orderList) {
             if (order.getOrderId().equals(orderID)) {
@@ -64,46 +66,6 @@ public class OrderList {
         System.out.println("Order with ID " + orderID + " does not exist.");
     }
 
-    // List of all order
-    public void listOrder() {
-        System.out.println("Order List:");
-        System.out.println("------------------------------------------------------");
-        System.out.println("| OrderID  | CustomerName   | Date         | Cost  | Status  |");
-        System.out.println("------------------------------------------------------");
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        for (Order order : orderList) {
-            System.out.format("| %-8s | %-14s | %-12s | %-5.2f | %-7s |\n",
-                    order.getOrderId(), order.getCustomerName(), order.getOrderDate().format(formatter),
-                    order.getCost(), order.getStatus());
-        }
-
-        System.out.println("------------------------------------------------------");
-    }
-
-    // purchase Order
-    public void purchaseHistory() {
-        System.out.println("Purchase History:");
-        System.out.println("------------------------------------------------------");
-        System.out.println("| OrderID  | CustomerName   | Date         | Cost  | Status  |");
-        System.out.println("------------------------------------------------------");
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        for (Order order : orderList) {
-            if (order.getStatus().equalsIgnoreCase("finish")) {
-                System.out.format("| %-8s | %-14s | %-12s | %-5.2f | %-7s |\n",
-                        order.getOrderId(), order.getCustomerName(), order.getOrderDate().format(formatter),
-                        order.getCost(), order.getStatus());
-            }
-        }
-
-        System.out.println("------------------------------------------------------");
-    }
-
-    public void createOrder(String orderId, Course course, LocalDateTime orderDate) {
-    }
 
     // Calculate the total cost of courses in the order
     private void calCost(Order order) {
@@ -115,4 +77,19 @@ public class OrderList {
     }
 
 
+    // Lay danh sach don hang
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+
+    //tra ve order khi nhap bang id - dung de update order
+    public Order getOrderById(String orderId) {
+        for (Order order : orderList) {
+            if (order.getOrderId().equals(orderId)) {
+                return order;
+            }
+        }
+        return null;
+    }
 }
