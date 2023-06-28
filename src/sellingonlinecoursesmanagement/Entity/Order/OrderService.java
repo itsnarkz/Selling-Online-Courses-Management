@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-class OrderService {
+public class OrderService {
     private OrderList orderList;
     private CourseList courseList;
 
@@ -16,7 +16,8 @@ class OrderService {
         this.orderList = new OrderList();
         this.courseList = new CourseList();
     }
-
+    //------------------------------------------------------------------
+    //ham xem id co hop le khong
     private boolean validID(String id) {
         if (id.length() != 6) return false;
         for (int i = 0; i < 6; ++i)
@@ -24,6 +25,7 @@ class OrderService {
         return true;
     }
 
+    //ham nhap id
     private String inputID() {
         Scanner sc = new Scanner(System.in);
 
@@ -36,7 +38,7 @@ class OrderService {
         return id;
     }
 
-    // Method to input a course ID and return the corresponding course name
+    // ham nhap course boi id
     public Course inputCourse() {
         System.out.print("Enter course ID: ");
         String courseId = inputID();
@@ -51,18 +53,8 @@ class OrderService {
         return course;
     }
 
-    public void createOrder() {
-        String orderId = orderList.randomOrderID();
-        System.out.println("Order ID: " + orderId);
 
-        Course course = inputCourse();
-        if (course != null) {
-            LocalDateTime orderDate = inputOrderDate();
-            orderList.createOrder(orderId, course, orderDate);
-            System.out.println("Order created successfully!");
-        }
-    }
-
+    //ham nhap date
     private LocalDateTime inputOrderDate() {
         System.out.println("Enter order date and time (yyyy-MM-dd HH:mm): ");
         Scanner scanner = new Scanner(System.in);
@@ -77,12 +69,64 @@ class OrderService {
         }
     }
 
+    //------------------------------------------------------------------
+
+    //ham tao order moi trong list order
+    public void createOrder() {
+        String orderId = orderList.randomOrderID();
+        orderList.createOrder(orderId);
+        System.out.printf("Create order successfully with ID: " + orderId);
+    }
+
+    //ham update order
+
+    public void updateOrder() {
+        System.out.print("Enter the order ID to update: ");
+        String orderId = inputID();
+
+        Order order = orderList.getOrderById(orderId);
+        if (order == null) {
+            System.out.println("Order not found by the entered ID: " + orderId);
+            return;
+        }
+
+        System.out.println("Select an option:");
+        System.out.println("1. Add Course");
+        System.out.println("2. Remove Course");
+        Scanner scanner = new Scanner(System.in);
+        int option = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (option) {
+            case 1:  // them khoa hoc
+                Course courseToAdd = inputCourse();
+                if (courseToAdd != null) {
+                    order.addCourse(courseToAdd.getId(), courseList);
+                    System.out.println("Course added to the order.");
+                }
+                break;
+            case 2:  // xoa khoa hoc
+                Course courseToRemove = inputCourse();
+                if (courseToRemove != null) {
+                    order.removeCourse(courseToRemove.getId(), courseList);
+                    System.out.println("Course removed from the order.");
+                }
+                break;
+            default:
+                System.out.println("Invalid option.");
+        }
+    }
+
+
+
+    //ham huy order khoi list order
     public void cancelOrder() {
         System.out.print("Enter order ID to cancel: ");
         String orderId = inputID();
         orderList.cancelOrder(orderId);
     }
 
+    //ham tim kiem va hien thi 1 order
     public void searchOrder() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the order ID to search: ");
@@ -90,14 +134,28 @@ class OrderService {
         orderList.searchOrder(orderId);
     }
 
+
+
+    // ham in ra danh sach order
     public void listOrder() {
-        orderList.listOrder();
+        System.out.println("List of Orders:");
+        System.out.println("------------------------------------------------------");
+        System.out.println("| OrderID  | CustomerName   | Date         | Cost  |");
+        System.out.println("------------------------------------------------------");
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        for (Order order : orderList.getOrderList()) {
+            System.out.format("| %-8s | %-14s | %-12s | %-7s |\n",
+                    order.getOrderId(), order.getCustomerName(), order.getOrderDate().format(formatter),
+                    order.getCost());
+        }
+
+        System.out.println("------------------------------------------------------");
     }
 
-    public void purchaseHistory() {
-        orderList.purchaseHistory();
-    }
 
-    //applyVoucher: hoan thien sau khi voucher duoc tao boi class Person
-    // viet ham tinh gia tien cua cac course
+
+
+
 }
