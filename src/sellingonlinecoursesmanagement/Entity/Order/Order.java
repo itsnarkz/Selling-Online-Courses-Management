@@ -16,12 +16,12 @@ public class Order {
     private List<Course> courses;
     private double cost;
 
-    public Order(String orderId, String customerName) {
+    public Order(String orderId, String customerName, LocalDateTime orderDate, double cost) {
         this.orderId = orderId;
         this.customerName = customerName;
-        this.orderDate = LocalDateTime.now();
+        this.orderDate = orderDate;
+        this.cost = cost;
         this.courses = new ArrayList<>();
-        this.cost = 0.0;
     }
 
     public String getOrderId() {
