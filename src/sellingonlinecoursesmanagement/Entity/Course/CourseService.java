@@ -144,6 +144,7 @@ public class CourseService {
         String id = randomID();
         courseList.createCourse(id, courseName, category, major, courseAuthor, price, publishedDate);
         fileSystem.addCourse(id, courseName, category, major, courseAuthor, price, publishedDate);
+
         System.out.println("Added new course successfully!");
     }
 

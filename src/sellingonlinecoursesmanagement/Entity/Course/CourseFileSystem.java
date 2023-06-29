@@ -32,7 +32,7 @@ public class CourseFileSystem {
                 courseList.createCourse(id, courseName, category, major, courseAuthor, price, publishedDate);
             }
         } catch (IOException e) {
-            System.out.println("Error loading users from file: " + e.getMessage());
+            System.out.println("Error loading courses from file: " + e.getMessage());
         }
     }
 
@@ -47,7 +47,7 @@ public class CourseFileSystem {
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.out.println("Error saving users to file: " + e.getMessage());
+            System.out.println("Error saving courses to file: " + e.getMessage());
         }
     }
 
