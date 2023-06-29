@@ -13,34 +13,13 @@ public class OrderList {
         this.orderList = new ArrayList<>();
     }
 
-    // Ham tao ID ngau nhien
-    public String randomOrderID() {
-        Random rand = new Random();
-        StringBuilder id = new StringBuilder();
-
-        while (true) {
-            for (int i = 0; i < 6; i++) {
-                int j = rand.nextInt(10);
-                id.append(j);
-            }
-
-            boolean check = orderList.stream().noneMatch(order -> order.getOrderId().equals(id.toString()));
-            if (check) return id.toString();
-
-            id.setLength(0);
-        }
-    }
-
-
     // Tao don hang moi
-    public void createOrder(String customerName) {
-        String orderId = randomOrderID();
+    public void createOrder(String orderId, String customerName) {
         LocalDateTime orderDate = LocalDateTime.now();
         double cost = 0.0;
-        Order order = new Order(orderId, customerName, orderDate, cost);
+        Order order = new Order(orderId, customerName.trim().toUpperCase(), orderDate, cost);
         orderList.add(order);
     }
-
 
     // Xoa 1 don hang
     public void cancelOrder(String orderID) {
@@ -49,23 +28,20 @@ public class OrderList {
             Order order = iterator.next();
             if (order.getOrderId().equals(orderID)) {
                 iterator.remove();
-                System.out.println("Order with ID " + orderID + " has been canceled.");
                 return;
             }
         }
-        System.out.println("Order with ID " + orderID + " does not exist.");
     }
 
 
     // Search for an order by orderID - dung de hien thi order
-    public void searchOrder(String orderID) {
+    public Order searchOrder(String orderID) {
         for (Order order : orderList) {
             if (order.getOrderId().equals(orderID)) {
-                order.displayOrder(orderID);
-                return;
+                return order;
             }
         }
-        System.out.println("Order with ID " + orderID + " does not exist.");
+        return null;
     }
 
 
@@ -81,7 +57,7 @@ public class OrderList {
 
     // Lay danh sach don hang
     public List<Order> getOrderList() {
-        return orderList;
+        return this.orderList;
     }
 
 

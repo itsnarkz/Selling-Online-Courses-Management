@@ -1,4 +1,5 @@
 package sellingonlinecoursesmanagement.Entity.Order;
+import sellingonlinecoursesmanagement.Entity.Course.Course;
 import sellingonlinecoursesmanagement.Entity.Course.CourseList;
 
 import java.io.*;
@@ -12,8 +13,8 @@ public class OrderFileSystem {
     private static final String FILE_PATH = "order.txt";
     private OrderList orderList;
 
-    public OrderFileSystem(OrderList orderList) {
-        this.orderList = orderList;
+    public OrderFileSystem() {
+        this.orderList = new OrderList();
         loadOrder();
     }
 
@@ -28,7 +29,7 @@ public class OrderFileSystem {
                 double cost = Double.parseDouble(parts[3]);
 
                 Order order = new Order(orderId, customerName, orderDate, cost);
-                orderList.getOrderList().add(order);
+                orderList.createOrder(orderId, customerName);
             }
         } catch (IOException e) {
             System.out.println("Error loading orders from file: " + e.getMessage());
@@ -39,10 +40,11 @@ public class OrderFileSystem {
 
     private void saveOrder() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
-            List<Order> orderList = this.orderList.getOrderList();
-            for (Order order : orderList) {
+            List<Order> List = orderList.getOrderList();
+            for (Order order : List) {
                 writer.write(order.getOrderId() + ":" + order.getCustomerName() + ":"
-                        + order.getOrderDate().toString() + ":" + order.getCost());
+                        + order.getOrderDate() + ":" + order.getCost() + ":");
+                for(Course course : order.getCourses()) writer.write(course.getId() + ":");
                 writer.newLine();
             }
         } catch (IOException e) {
@@ -50,39 +52,25 @@ public class OrderFileSystem {
         }
     }
 
-    public void createOrder(String customerName) {
-        String orderId = randomOrderID();
-        LocalDateTime orderDate = LocalDateTime.now();
-        double cost = 0.0;
-        Order order = new Order(orderId, customerName, orderDate, cost);
-        orderList.getOrderList().add(order);
+    public void createOrder(String orderId, String customerName) {
         saveOrder();
     }
 
-    private String randomOrderID() {
-        Random random = new Random();
-        int randomNumber = random.nextInt(900000) + 100000; // Số ngẫu nhiên từ 100000 đến 999999
-        return String.valueOf(randomNumber);
-    }
-
-
-    public void updateOrder(String orderId, OrderService orderService) {
-        orderService.updateOrder();
+    public void addCourse(String orderId, String courseId, CourseList list) {
         saveOrder();
     }
 
-
-    public void searchOrder(String orderId, OrderService orderService) {
-        orderService.searchOrder();
-    }
-
-    public void cancelOrder(String orderId, OrderService orderService) {
-        orderService.cancelOrder();
+    public void deleteCourse(String orderId, String courseId, CourseList list) {
         saveOrder();
     }
 
-    public void listOrder(OrderService orderService) {
-        orderService.listOrder();
+    public void cancelOrder(String orderId) {
+        orderList.cancelOrder(orderId);
+
+        saveOrder();
     }
 
+    public OrderList getAllOrders() {
+        return orderList;
+    }
 }

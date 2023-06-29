@@ -51,13 +51,8 @@ public class Order {
 
     public void addCourse(String courseId, CourseList courseList) {
         Course course = courseList.searchByID(courseId);
-        if (course != null) {
-            courses.add(course);
-            cost += course.getPrice();
-            System.out.println("Course added to the order.");
-        } else {
-            System.out.println("Course not found by the entered ID: " + courseId);
-        }
+        courses.add(course);
+        cost += course.getPrice();
     }
 
     public void removeCourse(String courseId, CourseList courseList) {
@@ -72,17 +67,11 @@ public class Order {
                 break;
             }
         }
-
-        if (found) {
-            System.out.println("Course removed from the order.");
-        } else {
-            System.out.println("Course not found by the entered ID: " + courseId);
-        }
     }
 
-    public void displayOrder(String orderID) {
+    public void displayOrder() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        System.out.println("Order ID: " + orderID);
+        System.out.println("Order ID: " + orderId);
         System.out.println("Customer Name: " + customerName);
         System.out.println("Order Date: " + orderDate.format(formatter));
         System.out.println("Cost: " + cost);

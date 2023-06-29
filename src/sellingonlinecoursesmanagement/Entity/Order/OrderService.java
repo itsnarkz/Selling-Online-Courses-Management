@@ -1,20 +1,27 @@
 package sellingonlinecoursesmanagement.Entity.Order;
 
 import sellingonlinecoursesmanagement.Entity.Course.Course;
+import sellingonlinecoursesmanagement.Entity.Course.CourseFileSystem;
 import sellingonlinecoursesmanagement.Entity.Course.CourseList;
 import sellingonlinecoursesmanagement.Entity.Order.OrderList;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class OrderService {
     private OrderList orderList;
     private CourseList courseList;
+    private OrderFileSystem orderFileSystem;
+    private CourseFileSystem courseFileSystem;
 
     public OrderService() {
-        this.orderList = new OrderList();
-        this.courseList = new CourseList();
+        this.orderFileSystem = new OrderFileSystem();
+        this.courseFileSystem = new CourseFileSystem();
+
+        this.courseList = courseFileSystem.getAllCourses();
+        this.orderList = orderFileSystem.getAllOrders();
     }
     //------------------------------------------------------------------
     //ham xem id co hop le khong
@@ -44,10 +51,9 @@ public class OrderService {
         String courseId = inputID();
 
         Course course = courseList.searchByID(courseId);
-        if (course != null) {
-            System.out.println(course.getCourseName());
-        } else {
+        if(course == null) {
             System.out.println("Course not found by ID you had entered: " + courseId);
+            return null;
         }
 
         return course;
@@ -69,14 +75,37 @@ public class OrderService {
         }
     }
 
+    private String randomID() {
+        Random rand = new Random();
+        char[] num = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+
+        while (true) {
+            String id = "";
+            for (int i = 1; i <= 6; ++i) {
+                int j = rand.nextInt(10);
+                id = id + num[j];
+            }
+
+            boolean check = false;
+            Course target = courseList.searchByID(id);
+            if (target != null) check = true;
+
+            if (!check) return id;
+        }
+    }
     //------------------------------------------------------------------
 
     //ham tao order moi trong list order
     public void createOrder() {
         System.out.print("Enter customer name: ");
         Scanner scanner = new Scanner(System.in);
+
         String customerName = scanner.nextLine();
-        orderList.createOrder(customerName);
+        String orderID = randomID();
+        orderList.createOrder(orderID, customerName);
+
+        orderFileSystem.createOrder(orderID, customerName);
+
         System.out.println("Order created successfully.");
     }
 
@@ -104,6 +133,8 @@ public class OrderService {
                 Course courseToAdd = inputCourse();
                 if (courseToAdd != null) {
                     order.addCourse(courseToAdd.getId(), courseList);
+                    orderFileSystem.addCourse(orderId, courseToAdd.getId(), courseList);
+
                     System.out.println("Course added to the order.");
                 }
                 break;
@@ -111,6 +142,8 @@ public class OrderService {
                 Course courseToRemove = inputCourse();
                 if (courseToRemove != null) {
                     order.removeCourse(courseToRemove.getId(), courseList);
+                    orderFileSystem.deleteCourse(orderId, courseToRemove.getId(), courseList);
+
                     System.out.println("Course removed from the order.");
                 }
                 break;
@@ -125,7 +158,9 @@ public class OrderService {
     public void cancelOrder() {
         System.out.print("Enter order ID to cancel: ");
         String orderId = inputID();
+
         orderList.cancelOrder(orderId);
+        orderFileSystem.cancelOrder(orderId);
     }
 
     //ham tim kiem va hien thi 1 order
@@ -133,10 +168,8 @@ public class OrderService {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the order ID to search: ");
         String orderId = scanner.nextLine();
-        orderList.searchOrder(orderId);
+        orderList.searchOrder(orderId).displayOrder();
     }
-
-
 
     // ham in ra danh sach order
     public void listOrder() {
@@ -155,9 +188,4 @@ public class OrderService {
 
         System.out.println("------------------------------------------------------");
     }
-
-
-
-
-
 }
