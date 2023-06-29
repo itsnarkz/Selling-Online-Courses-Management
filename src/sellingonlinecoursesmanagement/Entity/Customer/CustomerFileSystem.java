@@ -1,8 +1,5 @@
     package sellingonlinecoursesmanagement.Entity.Person.Customer;
 
-    import sellingonlinecoursesmanagement.Entity.Course.Course;
-    import sellingonlinecoursesmanagement.Entity.Course.CourseList;
-
     import java.io.*;
     import java.util.List;
     public class CustomerFileSystem {
