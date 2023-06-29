@@ -44,11 +44,17 @@ public class CustomerList {
 
     public Customer searchByID(String id) {
         Customer target = null;
-        for(Customer customer : customerList) {
-            if(Objects.equals(customer.getId(), id)) {
+        for (Customer customer : customerList) {
+            if (Objects.equals(customer.getId(), id)) {
                 target = customer;
                 break;
             }
+        }
+
+        if (target != null) {
+            target.display();
+        } else {
+            System.out.println("Customer with ID " + id + " not found!");
         }
 
         return target;
