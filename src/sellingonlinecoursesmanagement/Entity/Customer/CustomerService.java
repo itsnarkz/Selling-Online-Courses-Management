@@ -1,4 +1,4 @@
-package sellingonlinecoursesmanagement.Entity.Person.Customer;
+package sellingonlinecoursesmanagement.Entity.Customer;
 
 import java.text.ParseException;
 import java.util.Objects;
