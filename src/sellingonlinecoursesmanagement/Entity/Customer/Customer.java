@@ -1,4 +1,4 @@
-package sellingonlinecoursesmanagement.Entity.Person.Customer;
+package sellingonlinecoursesmanagement.Entity.Customer;
 
 public class Customer{
     private String id;
