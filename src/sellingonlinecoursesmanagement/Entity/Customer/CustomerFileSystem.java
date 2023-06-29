@@ -3,7 +3,7 @@
     import java.io.*;
     import java.util.List;
     public class CustomerFileSystem {
-        private static final String FILE_PATH1 = "customer.txt";
+        private static final String FILE_PATH1 = "data/customer.txt";
 
         private CustomerList customerList;
 

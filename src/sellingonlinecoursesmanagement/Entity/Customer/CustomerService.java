@@ -124,9 +124,9 @@ public class CustomerService {
         if(target != null) {
             customerList.deleteCustomer(id);
             fileSystem.deleteCustomer(id);
-            System.out.println("Delete course with id " + id + " successfully");
+            System.out.println("Delete customer with id " + id + " successfully");
         }
-        else System.out.println("There is no course with id " + id + "!");
+        else System.out.println("There is no customer with id " + id + "!");
     }
 
 
@@ -169,7 +169,11 @@ public class CustomerService {
         System.out.println("Enter ID of customer: ");
         String id = this.inputID();
 
-        System.out.print("The customer with ID "+ id + ": " );
-        customerList.searchByID(id);
+        Customer target = customerList.searchByID(id);
+        if(target == null) System.out.println("There is no customer with id " + id + "!");
+        else {
+            System.out.println("The customer with ID " + id + ": ");
+            target.displayToString();
+        }
     }
 }

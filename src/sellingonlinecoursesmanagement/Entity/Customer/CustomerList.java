@@ -48,12 +48,6 @@ public class CustomerList {
             }
         }
 
-        if (target != null) {
-            target.display();
-        } else {
-            System.out.println("Customer with ID " + id + " not found!");
-        }
-
         return target;
     }
 
@@ -67,14 +61,11 @@ public class CustomerList {
             }
         }
 
-        if(target == null) System.out.println("Can not found customer with ID " + id + "!");
-        else {
-            if(!Objects.equals(name, "0")) target.setName(name);
-            if(age != 0) target.setAge(age);
-            if(!Objects.equals(gender, "0")) target.setGender(gender);
-            if(!Objects.equals(phoneNumber, "0")) target.setPhoneNumber(phoneNumber);
-            if(!Objects.equals(email, "0")) target.setEmail(email);
-        }
+        if(!Objects.equals(name, "0")) target.setName(name);
+        if(age != 0) target.setAge(age);
+        if(!Objects.equals(gender, "0")) target.setGender(gender);
+        if(!Objects.equals(phoneNumber, "0")) target.setPhoneNumber(phoneNumber);
+        if(!Objects.equals(email, "0")) target.setEmail(email);
     }
 
 

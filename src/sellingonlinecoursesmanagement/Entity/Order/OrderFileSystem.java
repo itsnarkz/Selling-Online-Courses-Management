@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 public class OrderFileSystem {
-    private static final String FILE_PATH = "order.txt";
+    private static final String FILE_PATH = "data/order.txt";
     private OrderList orderList;
 
     public OrderFileSystem() {

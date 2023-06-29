@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CourseFileSystem {
-    private static final String FILE_PATH = "courses.txt";
+    private static final String FILE_PATH = "data/courses.txt";
     private CourseList courseList;
 
     public CourseFileSystem() {

@@ -1,6 +1,7 @@
 package sellingonlinecoursesmanagement;
 
 import sellingonlinecoursesmanagement.App.App;
+import sellingonlinecoursesmanagement.Entity.Customer.CustomerService;
 import sellingonlinecoursesmanagement.Entity.Order.OrderService;
 
 public class SellingOnlineCoursesManagement {
@@ -27,7 +28,6 @@ public class SellingOnlineCoursesManagement {
                     System.exit(0);
             }
         }
-
     }
     
 }

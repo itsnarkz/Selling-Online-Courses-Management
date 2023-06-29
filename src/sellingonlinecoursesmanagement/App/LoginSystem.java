@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class LoginSystem {
     private Map<String, String> regularUsers;
     private Map<String, String> adminUsers;
-    private static final String FILE_PATH = "users.txt";
+    private static final String FILE_PATH = "data/users.txt";
 
     public LoginSystem() {
         regularUsers = new HashMap<>();

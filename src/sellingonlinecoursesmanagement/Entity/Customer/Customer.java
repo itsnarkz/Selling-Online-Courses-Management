@@ -75,5 +75,12 @@ public class Customer{
         System.out.printf("%5s %19s %10s %10s %15s %25s \n",this.id, this.name, this.age, this.gender, this.phoneNumber, this.email);
     }
 
-
+    public void displayToString() {
+        System.out.println("ID: " + this.getId());
+        System.out.println("Name: " + this.getName());
+        System.out.println("Age: " + this.getAge());
+        System.out.println("Gender: " + this.getGender());
+        System.out.println("Phone Number: " + this.getPhoneNumber());
+        System.out.println("Email: " + this.getEmail());
+    }
 }
