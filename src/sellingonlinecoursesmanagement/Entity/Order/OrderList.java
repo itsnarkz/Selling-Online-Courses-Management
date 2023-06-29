@@ -34,8 +34,10 @@ public class OrderList {
 
     // Tao don hang moi
     public void createOrder(String customerName) {
-        String orderID = randomOrderID();
-        Order order = new Order(orderID, customerName);
+        String orderId = randomOrderID();
+        LocalDateTime orderDate = LocalDateTime.now();
+        double cost = 0.0;
+        Order order = new Order(orderId, customerName, orderDate, cost);
         orderList.add(order);
     }
 
