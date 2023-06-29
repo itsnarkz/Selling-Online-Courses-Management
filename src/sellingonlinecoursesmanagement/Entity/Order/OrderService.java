@@ -73,9 +73,11 @@ public class OrderService {
 
     //ham tao order moi trong list order
     public void createOrder() {
-        String orderId = orderList.randomOrderID();
-        orderList.createOrder(orderId);
-        System.out.printf("Create order successfully with ID: " + orderId);
+        System.out.print("Enter customer name: ");
+        Scanner scanner = new Scanner(System.in);
+        String customerName = scanner.nextLine();
+        orderList.createOrder(customerName);
+        System.out.println("Order created successfully.");
     }
 
     //ham update order
