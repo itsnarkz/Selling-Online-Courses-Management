@@ -1,4 +1,4 @@
-    package sellingonlinecoursesmanagement.Entity.Person.Customer;
+    package sellingonlinecoursesmanagement.Entity.Customer;
 
     import java.io.*;
     import java.util.List;
