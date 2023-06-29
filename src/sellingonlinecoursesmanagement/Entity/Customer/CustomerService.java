@@ -1,9 +1,6 @@
 package sellingonlinecoursesmanagement.Entity.Person.Customer;
 
-import sellingonlinecoursesmanagement.Entity.Course.Course;
 import java.text.ParseException;
-import sellingonlinecoursesmanagement.Entity.Course.CourseFileSystem;
-import sellingonlinecoursesmanagement.Entity.Course.CourseList;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
