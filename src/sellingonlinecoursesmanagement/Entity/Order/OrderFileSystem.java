@@ -55,24 +55,20 @@ public class OrderFileSystem {
 
     public void createOrder(String orderId, String customerName) {
         saveOrder();
-        loadOrder();
     }
 
     public void addCourse(String orderId, String courseId, CourseList list) {
         saveOrder();
-        loadOrder();
     }
 
     public void deleteCourse(String orderId, String courseId, CourseList list) {
         saveOrder();
-        loadOrder();
     }
 
     public void cancelOrder(String orderId) {
         orderList.cancelOrder(orderId);
 
         saveOrder();
-        loadOrder();
     }
 
     public OrderList getAllOrders() {

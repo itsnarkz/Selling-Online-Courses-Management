@@ -106,7 +106,7 @@ public class OrderService {
 
         orderFileSystem.createOrder(orderID, customerName);
 
-        System.out.println("Order created successfully.");
+        System.out.println("Order created successfully. Your order ID is " + orderID);
     }
 
     //ham update order
