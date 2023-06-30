@@ -3,6 +3,7 @@ package sellingonlinecoursesmanagement.Entity.Order;
 import sellingonlinecoursesmanagement.Entity.Course.Course;
 import sellingonlinecoursesmanagement.Entity.Course.CourseList;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -12,11 +13,11 @@ import java.util.List;
 public class Order {
     private String orderId;
     private String customerName;
-    private LocalDateTime orderDate;
+    private LocalDate orderDate;
     private List<Course> courses;
     private double cost;
 
-    public Order(String orderId, String customerName, LocalDateTime orderDate, double cost) {
+    public Order(String orderId, String customerName, LocalDate orderDate, double cost) {
         this.orderId = orderId;
         this.customerName = customerName;
         this.orderDate = orderDate;
@@ -32,7 +33,7 @@ public class Order {
         return customerName;
     }
 
-    public LocalDateTime getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 

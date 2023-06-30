@@ -2,6 +2,8 @@ package sellingonlinecoursesmanagement.Entity.Order;
 
 import sellingonlinecoursesmanagement.Entity.Course.Course;
 import sellingonlinecoursesmanagement.Entity.Course.CourseList;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -15,7 +17,7 @@ public class OrderList {
 
     // Tao don hang moi
     public void createOrder(String orderId, String customerName) {
-        LocalDateTime orderDate = LocalDateTime.now();
+        LocalDate orderDate = LocalDate.now();
         double cost = 0.0;
         Order order = new Order(orderId, customerName.trim().toUpperCase(), orderDate, cost);
         orderList.add(order);

@@ -168,7 +168,10 @@ public class OrderService {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the order ID to search: ");
         String orderId = scanner.nextLine();
-        orderList.searchOrder(orderId).displayOrder();
+
+        Order target = orderList.searchOrder(orderId);
+        if(target != null) target.displayOrder();
+        else System.out.println("There is no order with id " + orderId + "!");
     }
 
     // ham in ra danh sach order

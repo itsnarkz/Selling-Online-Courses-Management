@@ -3,6 +3,7 @@ import sellingonlinecoursesmanagement.Entity.Course.Course;
 import sellingonlinecoursesmanagement.Entity.Course.CourseList;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -25,7 +26,7 @@ public class OrderFileSystem {
                 String[] parts = line.split(":");
                 String orderId = parts[0];
                 String customerName = parts[1];
-                LocalDateTime orderDate = LocalDateTime.parse(parts[2]);
+                LocalDate orderDate = LocalDate.parse(parts[2]);
                 double cost = Double.parseDouble(parts[3]);
 
                 Order order = new Order(orderId, customerName, orderDate, cost);
@@ -54,20 +55,24 @@ public class OrderFileSystem {
 
     public void createOrder(String orderId, String customerName) {
         saveOrder();
+        loadOrder();
     }
 
     public void addCourse(String orderId, String courseId, CourseList list) {
         saveOrder();
+        loadOrder();
     }
 
     public void deleteCourse(String orderId, String courseId, CourseList list) {
         saveOrder();
+        loadOrder();
     }
 
     public void cancelOrder(String orderId) {
         orderList.cancelOrder(orderId);
 
         saveOrder();
+        loadOrder();
     }
 
     public OrderList getAllOrders() {
