@@ -37,6 +37,7 @@ public class App {
                     System.out.print("Please enter again: ");
                 } else break;
             } catch (Exception e) {
+                sc.nextLine();
                 System.out.println("Invalid input!");
                 System.out.print("Please enter again: ");
             }
@@ -86,10 +87,67 @@ public class App {
     }
 
     public void runAdmin() {
-
+        
     }
 
     public void runCustomer() {
+        while(true) {
+            customerFeatures.showMenu();
+            int choice = this.getChoice(1, 14);
 
+            switch (choice) {
+                case 1:
+                    customerFeatures.viewAllCourses();
+                    System.out.println();
+                    break;
+                case 2:
+                    customerFeatures.listByCategory();
+                    System.out.println();
+                    break;
+                case 3:
+                    customerFeatures.listByMajor();
+                    System.out.println();
+                    break;
+                case 4:
+                    customerFeatures.listByBestSeller();
+                    System.out.println();
+                    break;
+                case 5:
+                    customerFeatures.searchByAuthor();
+                    System.out.println();
+                    break;
+                case 6:
+                    customerFeatures.searchByName();
+                    System.out.println();
+                    break;
+                case 7:
+                    customerFeatures.sortByRating();
+                    System.out.println();
+                    break;
+                case 8:
+                    customerFeatures.sortByPrice();
+                    System.out.println();
+                    break;
+                case 9:
+                    customerFeatures.sortByName();
+                    System.out.println();
+                    break;
+                case 10:
+                    customerFeatures.createOrder();
+                    System.out.println();
+                    break;
+                case 11:
+                    customerFeatures.updateOrder();
+                    System.out.println();
+                    break;
+                case 12:
+                    customerFeatures.checkOut();
+                    System.out.println();
+                    break;
+                case 13:
+                    System.out.println("Have a nice day!");
+                    return;
+            }
+        }
     }
 }
