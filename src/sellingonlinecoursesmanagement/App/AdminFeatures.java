@@ -1,72 +1,60 @@
 package sellingonlinecoursesmanagement.App;
 
 import sellingonlinecoursesmanagement.Entity.Course.CourseService;
+import sellingonlinecoursesmanagement.Entity.Customer.CustomerService;
 import sellingonlinecoursesmanagement.Entity.Order.OrderService;
 
 public class AdminFeatures {
 
     private CourseService cs;
     private OrderService os;
+    private CustomerService cus;
 
     public AdminFeatures() {
         this.cs = new CourseService();
         this.os = new OrderService();
+        this.cus= new CustomerService();
     }
 
     public void showMenu() {
         System.out.println("--------------MENU----------");
-        System.out.printf("1. ViewAllCourses           9. SearchByName");
-        System.out.printf("2. ListByCategory           10. SortByPrice");
-        System.out.printf("3. ListByMajor                 11. SortByName");
-        System.out.printf("4. ListByBestSeller          12. ViewOrder");
-        System.out.printf("5. SearchByAuthor          13. ApplyVoucher");
-        System.out.printf("6. SortByRating               14. DeleteCourse");
-        System.out.printf("7. SearchOrder                15. CreateCourse");
-        System.out.printf("8.UpdateCourse");
-    }
+        System.out.printf("1. Create Course               6. Create Order         11.Create Customer");
+        System.out.printf("2. Update Course              7. Update Order        12.Update Customer");
+        System.out.printf("3. cancle Course               8. Delete Order          13.Delete Customer");
+        System.out.printf("4. Search Course              9. Search Order         14.Search Customer");
+        System.out.printf("5. View Course                 10. View Order            15.View Customer");
 
-    public void viewAllCourses() {
-        cs.viewAllCourses();
     }
-
-    public void listByCategory() {
-        cs.listByCategory();
+    public void createOrder() {
+        os.createOrder();
     }
-
-    public void listByMajor() {
-        cs.listByMajor();
+    public void updateOrder() {
+        os.updateOrder();
     }
-
-    public void listByBestSeller() {
-        cs.listBestSeller();
+    public void cancelOrder() {
+        os.cancelOrder();
     }
-
-    public void searchByAuthor() {
-        cs.searchByAuthor();
-    }
-
-    public void sortByRating() {
-        cs.sortByRating();
-    }
-
-    public void searchByName() {
-        cs.searchByName();
-    }
-
-    public void sortByPrice() {
-        cs.sortByPrice();
-    }
-
-    public void sortByName() {
-        cs.sortByName();
-    }
-
-    public void viewOrder() {
+    public void listOrder() {
         os.listOrder();
     }
 
-    public void applyVoucher() {
-        //chua co
+    public void createCustomer() {
+        cus.createCustomer();
+    }
+
+    public void deleteCustomer() {
+        cus.deleteCustomer();
+    }
+
+    public void updateCustomer() {
+        cus.updateCustomer();
+    }
+
+    public void viewAllCustomer() {
+        cus.viewAllCustomer();
+    }
+    public void searchCustomer(){
+        cus.searchCustomer();
     }
 
     public void searchOrder() {
@@ -85,4 +73,9 @@ public class AdminFeatures {
     public void deleteCourse() {
         cs.deleteCourse();
     }
+    public void viewAllCourses() {
+        cs.viewAllCourses();
+    }
+
+
 }
