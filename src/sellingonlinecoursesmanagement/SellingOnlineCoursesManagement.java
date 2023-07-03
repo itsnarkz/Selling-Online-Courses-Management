@@ -14,6 +14,7 @@ public class SellingOnlineCoursesManagement {
             switch(choice) {
                 case 1: //Log in
                     int role = app.Login();
+                    System.out.println();
                     if(role == -1) break;
 
                     if(role == 1) app.runAdmin();
@@ -22,6 +23,7 @@ public class SellingOnlineCoursesManagement {
                     break;
                 case 2: //Sign up
                     app.Signup();
+                    System.out.println();
                     break;
                 case 3: //Exit
                     System.out.println("Have a nice day! Thank you for shopping!");

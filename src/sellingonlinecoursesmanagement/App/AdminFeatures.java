@@ -74,6 +74,11 @@ public class AdminFeatures {
     public void deleteCourse() {
         cs.deleteCourse();
     }
+
+    public void searchCourse() {
+        cs.searchById();
+    }
+
     public void viewAllCourses() {
         cs.viewAllCourses();
     }

@@ -10,7 +10,7 @@ public class CustomerFeatures {
 
     public CustomerFeatures() {
         this.cs = new CourseService();
-        this.os=new OrderService();
+        this.os = new OrderService();
     }
     public void showMenu(){
         System.out.println("---------------------MENU----------------------");
@@ -51,11 +51,9 @@ public class CustomerFeatures {
     public void sortByName(){
         cs.sortByName();
     }
-
     public void createOrder() {
         os.createOrder();
     }
-
     public void updateOrder() {
         os.updateOrder();
     }

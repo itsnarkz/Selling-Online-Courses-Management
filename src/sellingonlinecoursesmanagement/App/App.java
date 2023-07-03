@@ -15,7 +15,12 @@ public class App {
     }
 
     public void displayInfo() {
-
+        System.out.println();
+        System.out.println("            SELLING ONLINE COURSES MANAGEMENT");
+        System.out.println("               ASSIGNMENT PRO192 - SE1819");
+        System.out.println("                    App version 1.0");
+        System.out.println("              (Please read file readme.md)");
+        System.out.println();
     }
 
     public void displayMenu() {
@@ -90,6 +95,7 @@ public class App {
         while (true) {
             adminFeatures.showMenu();
             int choice = this.getChoice(1, 15);
+            System.out.println();
             switch (choice) {
                 case 1:
                     adminFeatures.createCourse();
@@ -163,6 +169,7 @@ public class App {
             customerFeatures.showMenu();
             int choice = this.getChoice(1, 14);
 
+            System.out.println();
             switch (choice) {
                 case 1:
                     customerFeatures.viewAllCourses();

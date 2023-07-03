@@ -1,3 +1,2 @@
-phantrungdung:123456:user
-ptd:ptd:user
-hello:hello:user
+ptd:ptd:admin
+user:user:user
