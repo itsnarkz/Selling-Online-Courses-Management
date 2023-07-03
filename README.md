@@ -1,6 +1,5 @@
-# Selling-Online-Courses-Management
+# Selling-Online-Courses-Management v1.0
 PRO192 Assignment - SE1819
-Version 1.0
 
 # Team Members
 1. Hoàng Ngọc Thuỷ
