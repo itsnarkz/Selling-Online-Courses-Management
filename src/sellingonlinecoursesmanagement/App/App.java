@@ -47,12 +47,12 @@ public class App {
     }
 
     public int Login() {
-        while(true) {
+        while (true) {
             Scanner scanner = new Scanner(System.in);
 
             System.out.print("Username (type 0 if you want to go back): ");
             String username = scanner.nextLine();
-            if(Objects.equals(username, "0")) return -1;
+            if (Objects.equals(username, "0")) return -1;
 
             System.out.print("Password: ");
             String password = scanner.nextLine();
@@ -77,7 +77,7 @@ public class App {
 
         System.out.print("Enter a username (type 0 if you want to go back): ");
         String newUsername = scanner.nextLine();
-        if(Objects.equals(newUsername, "0")) return;
+        if (Objects.equals(newUsername, "0")) return;
 
         System.out.print("Enter a password: ");
         String newPassword = scanner.nextLine();
@@ -87,11 +87,75 @@ public class App {
     }
 
     public void runAdmin() {
-        
+        while (true) {
+            adminFeatures.showMenu();
+            int choice = this.getChoice(1, 15);
+            switch (choice) {
+                case 1:
+                    adminFeatures.createOrder();
+                    System.out.println();
+                    break;
+                case 2:
+                    adminFeatures.updateOrder();
+                    System.out.println();
+                    break;
+                case 3:
+                    adminFeatures.cancelOrder();
+                    System.out.println();
+                    break;
+                case 4:
+                    adminFeatures.listOrder();
+                    System.out.println();
+                    break;
+                case 5:
+                    adminFeatures.createCustomer();
+                    System.out.println();
+                    break;
+                case 6:
+                    adminFeatures.deleteCustomer();
+                    System.out.println();
+                    break;
+                case 7:
+                    adminFeatures.updateCustomer();
+                    System.out.println();
+                    break;
+                case 8:
+                    adminFeatures.viewAllCustomer();
+                    System.out.println();
+                    break;
+                case 9:
+                    adminFeatures.searchCustomer();
+                    System.out.println();
+                    break;
+                case 10:
+                    adminFeatures.searchOrder();
+                    System.out.println();
+                    break;
+                case 11:
+                    adminFeatures.updateCourse();
+                    System.out.println();
+                    break;
+                case 12:
+                    adminFeatures.createCourse();
+                    System.out.println();
+                    break;
+                case 13:
+                    adminFeatures.deleteCourse();
+                    System.out.println();
+                    break;
+                case 14:
+                    adminFeatures.viewAllCourses();
+                    System.out.println();
+                    break;
+                case 15:
+                    System.out.println("Have a nice day!");
+                    return;
+            }
+        }
     }
 
     public void runCustomer() {
-        while(true) {
+        while (true) {
             customerFeatures.showMenu();
             int choice = this.getChoice(1, 14);
 
