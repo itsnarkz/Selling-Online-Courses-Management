@@ -74,7 +74,8 @@ public class CustomerList {
     }
 
     public void display(List<Customer> list) {
-        System.out.printf("%15s %20s %20s %20s %20s %15s %15s %15s %20s %20s\n", "CourseID", "Name", "Category", "Major", "Author", "Sold", "Price", "Rating", "Published Date", "Last Update Date");
+        System.out.printf("%4s %13s %12s %13s %16s %20s", "ID", "Name", "Age", "Gender", "Phone Number", "Email");
+        System.out.println();
         for(Customer customer : list) customer.display();
     }
 
