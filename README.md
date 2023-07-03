@@ -1,7 +1,7 @@
 # Selling-Online-Courses-Management v1.0
 PRO192 Assignment - SE1819
 
-**Team Members**
+**Team Members:**
 1. Hoàng Ngọc Thuỷ
 2. Phan Trung Dũng
 3. Đỗ Đăng Phương
