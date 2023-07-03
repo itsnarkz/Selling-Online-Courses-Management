@@ -72,7 +72,7 @@ public class Customer{
 
     //ham hien thi thong tin
     public void display() {
-        System.out.printf("%5s %19s %10s %10s %15s %25s \n",this.id, this.name, this.age, this.gender, this.phoneNumber, this.email);
+        System.out.format("%-7s %-19s %-10s %-10s %-17s %-22s \n",this.id, this.name, this.age, this.gender, this.phoneNumber, this.email);
     }
 
     public void displayToString() {
