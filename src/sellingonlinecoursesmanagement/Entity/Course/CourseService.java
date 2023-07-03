@@ -2,9 +2,7 @@ package sellingonlinecoursesmanagement.Entity.Course;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class CourseService {
     private CourseList courseList;
@@ -197,6 +195,17 @@ public class CourseService {
     public void viewAllCourses() {
         System.out.println("Every courses in the system:");
         courseList.display(courseList.listAllCourses());
+    }
+
+    public void searchById() {
+        System.out.print("Enter id: ");
+        String id = this.inputID();
+
+        System.out.println("The course with id " + id + " is: ");
+
+        List<Course> t = new ArrayList<Course>();
+        t.add(courseList.searchByID(id));
+        courseList.display(t);
     }
 
     public void searchByName() {
