@@ -92,62 +92,66 @@ public class App {
             int choice = this.getChoice(1, 15);
             switch (choice) {
                 case 1:
-                    adminFeatures.createOrder();
-                    System.out.println();
-                    break;
-                case 2:
-                    adminFeatures.updateOrder();
-                    System.out.println();
-                    break;
-                case 3:
-                    adminFeatures.cancelOrder();
-                    System.out.println();
-                    break;
-                case 4:
-                    adminFeatures.listOrder();
-                    System.out.println();
-                    break;
-                case 5:
-                    adminFeatures.createCustomer();
-                    System.out.println();
-                    break;
-                case 6:
-                    adminFeatures.deleteCustomer();
-                    System.out.println();
-                    break;
-                case 7:
-                    adminFeatures.updateCustomer();
-                    System.out.println();
-                    break;
-                case 8:
-                    adminFeatures.viewAllCustomer();
-                    System.out.println();
-                    break;
-                case 9:
-                    adminFeatures.searchCustomer();
-                    System.out.println();
-                    break;
-                case 10:
-                    adminFeatures.searchOrder();
-                    System.out.println();
-                    break;
-                case 11:
-                    adminFeatures.updateCourse();
-                    System.out.println();
-                    break;
-                case 12:
                     adminFeatures.createCourse();
                     System.out.println();
                     break;
-                case 13:
+                case 2:
+                    adminFeatures.updateCourse();
+                    System.out.println();
+                    break;
+                case 3:
                     adminFeatures.deleteCourse();
                     System.out.println();
                     break;
-                case 14:
+                case 4:
+                    adminFeatures.searchCourse();
+                    System.out.println();
+                    break;
+                case 5:
                     adminFeatures.viewAllCourses();
                     System.out.println();
                     break;
+                case 6:
+                    adminFeatures.createOrder();
+                    System.out.println();
+                    break;
+                case 7:
+                    adminFeatures.updateOrder();
+                    System.out.println();
+                    break;
+                case 8:
+                    adminFeatures.cancelOrder();
+                    System.out.println();
+                    break;
+                case 9:
+                    adminFeatures.searchOrder();
+                    System.out.println();
+                    break;
+                case 10:
+                    adminFeatures.listOrder();
+                    System.out.println();
+                    break;
+                case 11:
+                    adminFeatures.createCustomer();
+                    System.out.println();
+                    break;
+                case 12:
+                    adminFeatures.updateCustomer();
+                    System.out.println();
+                    break;
+                case 13:
+                    adminFeatures.deleteCustomer();
+                    System.out.println();
+                    break;
+                case 14:
+                    adminFeatures.searchCustomer();
+                    System.out.println();
+                    break;
                 case 15:
+                    adminFeatures.viewAllCustomer();
+                    System.out.println();
+                    break;
+                case 16:
                     System.out.println("Have a nice day!");
                     return;
             }
