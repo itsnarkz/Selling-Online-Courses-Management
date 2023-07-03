@@ -17,12 +17,13 @@ public class AdminFeatures {
     }
 
     public void showMenu() {
-        System.out.println("--------------MENU----------");
-        System.out.printf("1. Create Course               6. Create Order         11.Create Customer");
-        System.out.printf("2. Update Course              7. Update Order        12.Update Customer");
-        System.out.printf("3. cancle Course               8. Delete Order          13.Delete Customer");
-        System.out.printf("4. Search Course              9. Search Order         14.Search Customer");
-        System.out.printf("5. View Course                 10. View Order            15.View Customer");
+        System.out.println("------------------------------------MENU--------------------------------------");
+        System.out.println("1. Create Course                6. Create Order             11.Create Customer");
+        System.out.println("2. Update Course                7. Update Order             12.Update Customer");
+        System.out.println("3. Cancel Course                8. Delete Order             13.Delete Customer");
+        System.out.println("4. Search Course                9. Search Order             14.Search Customer");
+        System.out.println("5. View Course                  10. View Order              15.View Customer");
+        System.out.println("                                16. Exit");
 
     }
     public void createOrder() {
