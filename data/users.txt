@@ -1,2 +1,2 @@
-ptd:ptd:admin
 user:user:user
+ptd:ptd:admin

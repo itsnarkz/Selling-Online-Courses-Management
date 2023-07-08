@@ -5,7 +5,6 @@ import sellingonlinecoursesmanagement.Entity.Customer.CustomerService;
 import sellingonlinecoursesmanagement.Entity.Order.OrderService;
 
 public class AdminFeatures {
-
     private CourseService cs;
     private OrderService os;
     private CustomerService cus;
@@ -28,6 +27,7 @@ public class AdminFeatures {
         System.out.println();
         System.out.print("Enter your option: ");
     }
+
     public void createOrder() {
         os.createOrder();
     }
@@ -40,50 +40,34 @@ public class AdminFeatures {
     public void listOrder() {
         os.listOrder();
     }
-
     public void createCustomer() {
         cus.createCustomer();
     }
-
     public void deleteCustomer() {
         cus.deleteCustomer();
     }
-
     public void updateCustomer() {
         cus.updateCustomer();
     }
-
     public void viewAllCustomer() {
         cus.viewAllCustomer();
     }
     public void searchCustomer(){
         cus.searchCustomer();
     }
-
-    public void searchOrder() {
-        os.searchOrder();
-
-    }
-
+    public void searchOrder() { os.searchOrder(); }
     public void updateCourse() {
         cs.updateCourse();
     }
-
     public void createCourse() {
         cs.createCourse();
     }
-
     public void deleteCourse() {
         cs.deleteCourse();
     }
-
-    public void searchCourse() {
-        cs.searchById();
-    }
-
+    public void searchCourse() { cs.searchById(); }
     public void viewAllCourses() {
         cs.viewAllCourses();
     }
-
 
 }

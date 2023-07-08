@@ -16,16 +16,18 @@ public class App {
 
     public void displayInfo() {
         System.out.println();
+        System.out.println("=========================================================");
         System.out.println("            SELLING ONLINE COURSES MANAGEMENT");
         System.out.println("               PRO192 ASSIGNMENT - SE1819");
         System.out.println("                    App version 1.0");
-        System.out.println("              (Please read file readme.md)");
+        System.out.println("                (Please read readme.md)");
+        System.out.println("=========================================================");
         System.out.println();
     }
 
     public void displayMenu() {
         System.out.println("1. Login");
-        System.out.println("2. SignUp");
+        System.out.println("2. Sign Up / Change Password");
         System.out.println("3. Exit");
         System.out.print("Choose an option: ");
     }
@@ -88,13 +90,12 @@ public class App {
         String newPassword = scanner.nextLine();
         String role = "user";
         loginSystem.addUser(newUsername, newPassword, role);
-        System.out.println("User signed up successfully.");
     }
 
     public void runAdmin() {
         while (true) {
             adminFeatures.showMenu();
-            int choice = this.getChoice(1, 15);
+            int choice = this.getChoice(1, 16);
             System.out.println();
             switch (choice) {
                 case 1:
@@ -167,7 +168,7 @@ public class App {
     public void runCustomer() {
         while (true) {
             customerFeatures.showMenu();
-            int choice = this.getChoice(1, 14);
+            int choice = this.getChoice(1, 13);
 
             System.out.println();
             switch (choice) {

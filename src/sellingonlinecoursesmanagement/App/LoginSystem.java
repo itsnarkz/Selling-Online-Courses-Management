@@ -5,9 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class LoginSystem {
     private Map<String, String> regularUsers;
@@ -40,8 +38,20 @@ public class LoginSystem {
         return false;
     }
 
+    private boolean checkValid(String username) {
+        Set<String> t = adminUsers.keySet();
+        for(String var : t) {
+            if(Objects.equals(username, var)) return false;
+        }
+        return true;
+    }
+
     public void addUser(String username, String password, String role) {
         if (role.equals("user")) {
+            if(!checkValid(username)) {
+                System.out.println("You cannot use that username!");
+                return;
+            }
             regularUsers.put(username, password);
         } else if (role.equals("admin")) {
             adminUsers.put(username, password);
@@ -50,6 +60,7 @@ public class LoginSystem {
             return;
         }
 
+        System.out.println("Successfully.");
         saveUsers();
     }
 
