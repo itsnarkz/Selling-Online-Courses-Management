@@ -43,7 +43,7 @@ public class CustomerService {
     }
 
     private boolean validAge(int age) {
-        return (age > 0);
+        return (age > -1);
     }
 
     private int inputAge() {
