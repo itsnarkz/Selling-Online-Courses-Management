@@ -201,11 +201,14 @@ public class CourseService {
         System.out.print("Enter id: ");
         String id = this.inputID();
 
-        System.out.println("The course with id " + id + " is: ");
-
-        List<Course> t = new ArrayList<Course>();
-        t.add(courseList.searchByID(id));
-        courseList.display(t);
+        Course target = courseList.searchByID(id);
+        if(target == null) System.out.println("There is no course with id " + id + "!");
+        else {
+            System.out.println("The course with id " + id + " is: ");
+            List<Course> t = new ArrayList<Course>();
+            t.add(courseList.searchByID(id));
+            courseList.display(t);
+        }
     }
 
     public void searchByName() {
